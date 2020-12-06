@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "ucok@gmail.com",
+      "password": "ucok"
+    },
+    {
+      "email": "bangjekss@gmail.com",
+      "password": "ea",
+      "id": 2
+    },
+    {
+      "email": "bangjekss@gmail.com",
+      "password": "ea",
+      "id": 3
+    },
+    {
+      "email": "bangjekss@gmail.com",
+      "password": "ea",
+      "id": 4
+    },
+    {
+      "email": "lol@gmail.com",
+      "password": "ea",
+      "id": 5
+    }
+  ]
+}
