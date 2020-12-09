@@ -52,16 +52,18 @@ class ProductPage extends Component {
   };
 
   render() {
-    console.log(this.props.productList);
     return (
-      <div className="row">
+      <div className="d-flex pt-5" style={{ margin: '0 100px' }}>
         <div className="col-3">
           <div>
             <h5>Categories</h5>
           </div>
           <div id="productsCategory">{this.renderCategoryList()}</div>
         </div>
-        <div className="col-9" style={{ display: 'flex', flexWrap: 'wrap' }} id="renderProductList">
+        <div
+          className="col-9"
+          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}
+        >
           {this.renderProductList()}
         </div>
       </div>

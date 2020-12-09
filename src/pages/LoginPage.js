@@ -7,6 +7,7 @@ import { loginAction } from '../redux/action/userAction';
 import { Redirect } from 'react-router-dom';
 import '../App.css';
 import { Link } from 'react-router-dom';
+
 // import {} from '../sprites/';
 
 class LoginPage extends Component {
