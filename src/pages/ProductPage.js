@@ -4,8 +4,6 @@ import { fetchCategoriesAction, fetchProductsAction, getProductByCategory } from
 import Select from 'react-select';
 import { ProductCard } from '../components';
 import { Link } from 'react-router-dom';
-// import Axios from 'axios';
-// import { API_URL } from '../helpers/api-url';
 
 class ProductPage extends Component {
   state = {
