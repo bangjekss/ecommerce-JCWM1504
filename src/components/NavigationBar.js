@@ -17,6 +17,7 @@ import {
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutAction } from '../redux/action';
+import YuchaseLogo from '../sprites/yuchase-pin-logo.png';
 
 class NavigationBar extends Component {
   state = {
@@ -53,8 +54,15 @@ class NavigationBar extends Component {
   renderLogInfo = () => {
     if (this.props.email !== null) {
       return (
-        <div>
-          <NavbarText style={{ color: 'black', textDecoration: 'none', marginRight: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <NavbarText
+            style={{
+              color: 'black',
+              textDecoration: 'none',
+              marginRight: '20px',
+              cursor: 'pointer',
+            }}
+          >
             <div>Profile</div>
           </NavbarText>
           <Button color="danger" onClick={this.props.logoutAction} className="my-2">
@@ -70,8 +78,20 @@ class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="" light expand="md" style={{ backgroundColor: 'rgba(255, 202, 0,1)' }}>
-          <NavbarBrand href="/">Yuchase</NavbarBrand>
+        <Navbar
+          color=""
+          light
+          expand="md"
+          style={{ backgroundColor: 'rgba(255, 202, 0,1)' }}
+          className="px-5"
+        >
+          <NavbarBrand href="/" style={{ height: '40px' }} className="mr-5">
+            <img
+              src={YuchaseLogo}
+              alt="ERR: file_not_found"
+              style={{ height: '100%', transform: 'scale(2.2,2.2) translate(0, -1px)' }}
+            />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>

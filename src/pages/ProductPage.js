@@ -53,7 +53,7 @@ class ProductPage extends Component {
 
   render() {
     return (
-      <div className="d-flex pt-5" style={{ margin: '0 100px' }}>
+      <div className="d-flex pt-5 bgMain" style={{ padding: '0 100px' }}>
         <div className="col-3">
           <div>
             <h5>Categories</h5>
