@@ -1,3 +1,4 @@
 import NavigationBar from './NavigationBar';
+import ProductCard from './ProductCard';
 
-export { NavigationBar };
+export { NavigationBar, ProductCard };

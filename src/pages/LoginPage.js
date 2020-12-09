@@ -5,6 +5,7 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import { loginAction } from '../redux/action/userAction';
 import { Redirect } from 'react-router-dom';
+// import {} from '../sprites/';
 
 class LoginPage extends Component {
   state = {
@@ -33,6 +34,7 @@ class LoginPage extends Component {
           alert('invalid');
         } else {
           this.props.loginAction(res.data[0]);
+          localStorage.setItem('id', res.data[0].id);
         }
       })
       .catch((error) => {
@@ -48,12 +50,18 @@ class LoginPage extends Component {
     }
     return (
       <div
+        id="bgForm"
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
           height: '100vh',
+          // backgroundImage: {require},
+          // backgroundSize: '100% 100%',
+          // backgroundPosition: 'center',
+          // backgroundRepeat: 'no-repeat',
+          // backgroundColor: 'red',
         }}
       >
         <div>Login FORM</div>

@@ -12,16 +12,11 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+  Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-// const Example = (props) => {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggle = () => setIsOpen(!isOpen);
-
-// };
+import { logoutAction } from '../redux/action';
 
 class NavigationBar extends Component {
   state = {
@@ -32,35 +27,67 @@ class NavigationBar extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
-  render() {
-    if (this.props.email == null) {
-      return <div style={{ display: 'hidden' }}></div>;
+  handleLogout = () => {
+    return localStorage.removeItem(this.props.id);
+  };
+  renderDropdown = () => {
+    if (this.props.email !== null) {
+      return (
+        <DropdownMenu right>
+          <DropdownItem>Hi, {this.props.username}</DropdownItem>
+        </DropdownMenu>
+      );
+    } else {
+      return (
+        <DropdownMenu right>
+          <Link to="/login">
+            <DropdownItem>Login</DropdownItem>
+          </Link>
+          <Link to="/register">
+            <DropdownItem>Register</DropdownItem>
+          </Link>
+        </DropdownMenu>
+      );
     }
+  };
+  renderLogInfo = () => {
+    if (this.props.email !== null) {
+      return (
+        <div>
+          <NavbarText style={{ color: 'black', textDecoration: 'none', marginRight: '20px' }}>
+            <div>Profile</div>
+          </NavbarText>
+          <Button color="danger" onClick={this.props.logoutAction} className="my-2">
+            Logout
+          </Button>
+        </div>
+      );
+    } else {
+      return console.log('NOT LOGGED IN');
+    }
+  };
+
+  render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color="" light expand="md" style={{ backgroundColor: 'rgba(255, 202, 0,1)' }}>
           <NavbarBrand href="/">Yuchase</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Products</NavLink>
-              </NavItem>
+              <Link to="/products">
+                <NavItem>
+                  <NavLink href="/components/">Products</NavLink>
+                </NavItem>
+              </Link>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   User
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <Link to="/login">
-                    <DropdownItem>Login</DropdownItem>
-                  </Link>
-                  <DropdownItem>Register</DropdownItem>
-                  {/* <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem> */}
-                </DropdownMenu>
+                {this.renderDropdown()}
               </UncontrolledDropdown>
             </Nav>
-            <NavbarText>Simple Text</NavbarText>
+            {this.renderLogInfo()}
           </Collapse>
         </Navbar>
       </div>
@@ -68,10 +95,12 @@ class NavigationBar extends Component {
   }
 }
 
-const mapStateToProps = (gstate) => {
+const mapStateToProps = ({ user }) => {
   return {
-    email: gstate.user.email,
+    email: user.email,
+    username: user.username,
+    id: user.id,
   };
 };
 
-export default connect(mapStateToProps)(NavigationBar);
+export default connect(mapStateToProps, { logoutAction })(NavigationBar);

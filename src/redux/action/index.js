@@ -1,5 +1,6 @@
-// export * from './userAction';
+export * from './userAction';
+export * from './productAction';
 
-import { loginAction } from './userAction';
+// import { loginAction } from './userAction';
 
-export { loginAction };
+// export { loginAction };
